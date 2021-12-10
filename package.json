@@ -40,8 +40,8 @@
     "lint:fix": "eslint --fix .",
     "migrate": "knex migrate:latest",
     "migrate:make": "knex migrate:make",
-    "migrate:refresh": "npm run unmigrate && npm run migrate",
-    "migrate:refresh:seed": "npm run migrate:refresh && npm run seed",
+    "migrate:refresh": "knex migrate:rollback && knex migrate:latest",
+    "migrate:refresh:seed": "knex migrate:rollback && knex migrate:latest && knex seed:run",
     "unmigrate": "knex migrate:rollback",
     "seed": "knex seed:run",
     "seed:make": "knex seed:make"
