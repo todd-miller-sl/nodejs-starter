@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  app:
+    build: .
+    command: npm run dev
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - '.:/usr/app'
+      - /usr/app/node_modules
+    ports:
+      - 8888:3000
+    environment:
+      - 'NODE_ENV=development'
+      - PORT=3000
+      - PGUSER=postgres
+      - PGHOST=db
+      - PGPASSWORD=password
+      - PGDATABASE=nodejs-starter
+      - PGPORT=5432
+  db:
+    image: postgres:14.1
+    restart: always
+    environment:
+      - POSTGRES_DB=nodejs-starter
+      - POSTGRES_PASSWORD=password
