@@ -7,22 +7,26 @@ services:
     restart: always
     depends_on:
       - db
+      - db-testing
     volumes:
-      - '.:/usr/app'
+      - .:/usr/app
       - /usr/app/node_modules
     ports:
-      - 8888:3000
+      - 3333:3333
     environment:
-      - 'NODE_ENV=development'
-      - PORT=3000
-      - PGUSER=postgres
-      - PGHOST=db
-      - PGPASSWORD=password
-      - PGDATABASE=nodejs-starter
-      - PGPORT=5432
+      - NODE_ENV=development
+      - PORT=3333
+      - PG_CONNECTION=postgresql://postgres:password@db:5432/postgres
+      - PG_CONNECTION_TESTING=postgresql://postgres:password@db-testing:5432/postgres
   db:
     image: postgres:14.1
     restart: always
+    ports:
+      - 4444:5432
     environment:
-      - POSTGRES_DB=nodejs-starter
+      - POSTGRES_PASSWORD=password
+  db-testing:
+    image: postgres:14.1
+    restart: always
+    environment:
       - POSTGRES_PASSWORD=password

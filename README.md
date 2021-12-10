@@ -3,42 +3,37 @@ nodejs-starter
 
 > Node.js starter template
 
+## Prerequisites
+
+1. [Docker](https://docker.com) engine
+2. [docker-compose](https://docs.docker.com/compose)
+3. [Node.js](https://nodejs.org/en/download/releases) 16.x
+4. [npm](https://www.npmjs.com) 8.x
+
 ## Getting started
 
-### 1. Cloning repo
-
 ```sh
+# Clone repo
 git clone git@github.com:dustinmwang2104/nodejs-starter.git
 cd nodejs-starter
-```
 
-### 2. Preparation
-
-1. Create environment files.
-
-```sh
-cp .env.example .env.development
-cp .env.example .env.testing
-```
-
-2. Ensure the parameters inside the environment file are correct for database
-connection.
-
-3. Create schema (defined as `PGDATABASE`), if not exists.
-
-4. Install dependencies.
-
-```sh
+# Install npm dependencies
 npm install
+
+# Create and start docker containers
+docker-compose up
+
+# Run database migrations and seeders
+docker-compose exec app npm run migrate:refresh:seed
 ```
 
-### 3. Starting the server
+`docker-compose up` or `docker-compose start` will start server on host's port
+`3333` and will expose main postgres server on host's port `4444`.
 
-```sh
-npm start
-```
+> *Tip: [`docker-compose` setup](docker-compose.yml) is only for development
+purpose.
 
-## Scripts
+## Available npm scripts
 
 ```sh
 # Start server
