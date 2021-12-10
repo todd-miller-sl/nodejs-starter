@@ -20,6 +20,9 @@ coverage
 .env
 .env.*
 
+# docker-compose file
+docker-compose.yml
+
 # misc
 .editorconfig
 .nvmrc
