@@ -34,7 +34,7 @@
     "build": "npm install --production",
     "start": "node .",
     "dev": "nodemon",
-    "test": "NODE_ENV=testing mocha",
+    "test": "DOTENV_CONFIG_PATH=.env.testing NODE_ENV=testing mocha",
     "test:coverage": "nyc npm test",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",

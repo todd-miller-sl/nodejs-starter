@@ -7,5 +7,5 @@
   "ui": "bdd",
   "recursive": true,
   "exit": true,
-  "require": "should"
+  "require": ["should", "dotenv/config"]
 }
