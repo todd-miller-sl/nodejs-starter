@@ -18,13 +18,6 @@ describe('errors/Handler', () => {
     // Parse json
     app.use(bodyParser.json());
 
-    // Mock error after sending headers
-    app.get('/error_after_sending_headers', (req, res) => {
-      res.write('Something');
-
-      throw new Error();
-    });
-
     // Mock NotFoundError
     app.get('/not_found_error', (req, res) => {
       throw new NotFoundError('comment', 13);
