@@ -3,11 +3,6 @@ const bodyParser = require('body-parser');
 
 const { router: ApiV1Controller } = require('./controllers');
 
-// Init dotenv
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV || 'development'}`,
-});
-
 /**
  * Express app instance.
  */
